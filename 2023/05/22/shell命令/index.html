@@ -1,0 +1,460 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>shell命令 | 我の博客</title><meta name="author" content="Arancia"><meta name="copyright" content="Arancia"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Shell 脚本语言学习笔记echo 输出内容支持换行123# 默认情况下，echo关闭了对转移字符的解释，添加-e参数可打开echo对转义字符串的解释功能。-E关闭转义字符，是默认值echo -e &quot;输出内容\n&quot;   Copy  rwx权限对应数字12345678910111213rwx权限对应数字：r&#x3D;4，w&#x3D;2，x&#x3D;1。通过4、2、1的组合相加，得到以下几种权限：0：没">
+<meta property="og:type" content="article">
+<meta property="og:title" content="shell命令">
+<meta property="og:url" content="https://flechazo_star.gitee.io/2023/05/22/shell%E5%91%BD%E4%BB%A4/index.html">
+<meta property="og:site_name" content="我の博客">
+<meta property="og:description" content="Shell 脚本语言学习笔记echo 输出内容支持换行123# 默认情况下，echo关闭了对转移字符的解释，添加-e参数可打开echo对转义字符串的解释功能。-E关闭转义字符，是默认值echo -e &quot;输出内容\n&quot;   Copy  rwx权限对应数字12345678910111213rwx权限对应数字：r&#x3D;4，w&#x3D;2，x&#x3D;1。通过4、2、1的组合相加，得到以下几种权限：0：没">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s1.ax1x.com/2023/05/22/p9oJDWq.jpg">
+<meta property="article:published_time" content="2023-05-22T13:39:55.000Z">
+<meta property="article:modified_time" content="2023-06-06T05:40:41.732Z">
+<meta property="article:author" content="Arancia">
+<meta property="article:tag" content="shell">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2023/05/22/p9oJDWq.jpg"><link rel="shortcut icon" href="https://s1.ax1x.com/2023/05/22/p9Iz0je.png"><link rel="canonical" href="https://flechazo_star.gitee.io/2023/05/22/shell%E5%91%BD%E4%BB%A4/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'shell命令',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-06-06 13:40:41'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://s1.ax1x.com/2023/05/22/p9oJDWq.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 类别</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://s1.ax1x.com/2023/05/22/p9oUSpR.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="我の博客"></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 类别</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">shell命令</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-05-22T13:39:55.000Z" title="发表于 2023-05-22 21:39:55">2023-05-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-06-06T05:40:41.732Z" title="更新于 2023-06-06 13:40:41">2023-06-06</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Linux/">Linux</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>12分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="shell命令"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Shell-脚本语言学习笔记"><a href="#Shell-脚本语言学习笔记" class="headerlink" title="Shell 脚本语言学习笔记"></a>Shell 脚本语言学习笔记</h1><h4 id="echo-输出内容支持换行"><a href="#echo-输出内容支持换行" class="headerlink" title="echo 输出内容支持换行"></a>echo 输出内容支持换行</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 默认情况下，echo关闭了对转移字符的解释，添加-e参数可打开echo对转义字符串的解释功能。-E关闭转义字符，是默认值</span><br><span class="line">echo -e &quot;输出内容\n&quot;   </span><br><span class="line">Copy</span><br></pre></td></tr></table></figure>
+
+<h4 id="rwx权限对应数字"><a href="#rwx权限对应数字" class="headerlink" title="rwx权限对应数字"></a>rwx权限对应数字</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">rwx权限对应数字：r=4，w=2，x=1。</span><br><span class="line"></span><br><span class="line">通过4、2、1的组合相加，得到以下几种权限：</span><br><span class="line"></span><br><span class="line">0：没有权限；</span><br><span class="line">4：读取权限；</span><br><span class="line">5：读取+执行；</span><br><span class="line">6：读取+写入；</span><br><span class="line">7：读取+写入+执行。</span><br><span class="line"></span><br><span class="line">而777、776、770、466、444等是有上面组合相加后的组合，个十百位分别表示用户User、组Group、及其它Other的权限。</span><br><span class="line"></span><br><span class="line">Copy</span><br></pre></td></tr></table></figure>
+
+<h4 id="read"><a href="#read" class="headerlink" title="read"></a>read</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">选项说明：</span><br><span class="line">-a：将分裂后的字段依次存储到指定的数组中，存储的起始位置从数组的index=0开始。</span><br><span class="line">-d：指定读取行的结束符号。默认结束符号为换行符。</span><br><span class="line">-n：限制读取N个字符就自动结束读取，如果没有读满N个字符就按下回车或遇到换行符，则也会结束读取。</span><br><span class="line">-N：严格要求读满N个字符才自动结束读取，即使中途按下了回车或遇到了换行符也不结束。其中换行符或回车算一个字符。</span><br><span class="line">-p：给出提示符。默认不支持&quot;\n&quot;换行，要换行需要特殊处理，见下文示例。例如，&quot;-p 请输入密码：&quot;</span><br><span class="line">-r：禁止反斜线的转义功能。这意味着&quot;\&quot;会变成文本的一部分。</span><br><span class="line">-s：静默模式。输入的内容不会回显在屏幕上。</span><br><span class="line">-t：给出超时时间，在达到超时时间时，read退出并返回错误。也就是说不会读取任何内容，即使已经输入了一部分。-u：从给定文件描述符(fd=N)中读取数据。</span><br><span class="line">Copy</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>-p 提示信息换行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#还有$后接单引号的$&#x27;string&#x27;，这在bash中被特殊对待：会将某些反斜线序列(如\n，\t，\&quot;，\&#x27;等)继续转义，而不认为它是字面符号(如果没有$符号，单引号会强制将string翻译为字面符号，包括反斜线)</span><br><span class="line">read -p $&#x27;输出内容\n&#x27;</span><br><span class="line">Copy</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>读取多行值</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">read -p $&#x27;请输入arg1，arg2的值，中间以空格隔开:&#x27; arg1 arg2</span><br><span class="line">echo &quot;arg1 = &quot;$arg1</span><br><span class="line">echo &quot;arg2 = &quot;$arg2</span><br><span class="line">Copy</span><br></pre></td></tr></table></figure>
+
+<h4 id="定义变量与清除变量"><a href="#定义变量与清除变量" class="headerlink" title="定义变量与清除变量"></a>定义变量与清除变量</h4><ul>
+<li><p>变量定义</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">变量名=变量值    # 注意中间不要打空格</span><br><span class="line">num=10</span><br><span class="line">Copy</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>清除变量</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">unset 变量名</span><br><span class="line">unset num</span><br><span class="line">Copy</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>例子</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">read -p $&#x27;请输入num值：\n&#x27; num    #从键盘获取变量值</span><br><span class="line">echo &quot;num 的值是：  &quot;$num</span><br><span class="line">unset num                       #清除变量值</span><br><span class="line">echo &quot;num 的值是：  &quot;$num</span><br><span class="line">Copy</span><br></pre></td></tr></table></figure>
+
+<p>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-SFi0DV9t-1650241328286)(C:\Users\11066\AppData\Roaming\Typora\typora-user-images\image-20220411204522703.png)]</p>
+</li>
+</ul>
+<h3 id="变量的查看"><a href="#变量的查看" class="headerlink" title="变量的查看"></a>变量的查看</h3><h4 id="查看所有变量-：set"><a href="#查看所有变量-：set" class="headerlink" title="查看所有变量 ：set"></a>查看所有变量 ：set</h4><p>set命令输出所有的变量，包括全局变量和局部变量</p>
+<h4 id="查看环境变量"><a href="#查看环境变量" class="headerlink" title="查看环境变量"></a>查看环境变量</h4><p><code>env</code>命令只显示全局变量</p>
+<h4 id="查看所有的变量，函数，整数，和已经导出的变量"><a href="#查看所有的变量，函数，整数，和已经导出的变量" class="headerlink" title="查看所有的变量，函数，整数，和已经导出的变量"></a>查看所有的变量，函数，整数，和已经导出的变量</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">declare #命令输出所有的变量，函数，整数，和已经导出的变量</span><br><span class="line">set -o #命令显示bashShell的所有参数配置信息</span><br><span class="line">Copy</span><br></pre></td></tr></table></figure>
+
+<h3 id="自定义环境变量"><a href="#自定义环境变量" class="headerlink" title="自定义环境变量"></a>自定义环境变量</h3><h4 id="暂时设定环境变量"><a href="#暂时设定环境变量" class="headerlink" title="暂时设定环境变量"></a>暂时设定环境变量</h4><p>如果想设置环境变量，就要给在给变量赋值后或在设置变量时使用export命令，export命令和declare命令的格式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">export 变量名=value</span><br><span class="line">变量名=value ; export 变量名</span><br><span class="line">declare - x 变量名=value</span><br><span class="line">Copy</span><br></pre></td></tr></table></figure>
+
+<h4 id="永久设定环境变量"><a href="#永久设定环境变量" class="headerlink" title="永久设定环境变量"></a>永久设定环境变量</h4><ul>
+<li>用户环境变量配置</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1 [root@king scripts]# ls /root/.bashrc</span><br><span class="line">2 /root/.bashrc</span><br><span class="line">3 [root@king scripts]# ls /root/.bash_profile</span><br><span class="line">4 /root/.bash_profile</span><br><span class="line">Copy</span><br></pre></td></tr></table></figure>
+
+<p>说明： 对于用户的环境变量设置，常见的是用户家目录下的.bashrc和.bash_profile</p>
+<ul>
+<li><p>全局环境变量的配置</p>
+<p>常见的全局环境变量配置文件，<code>/etc/profile;/etc/bashrc;/etc/profile.d</code>这三个配置文件，如果想要在登陆后初始化或者显示加载的内容，只需要把脚本文件放在<code>/etc/profile.d</code>文件下即可（不需要加执行权限）</p>
+<p>在Java环境中，自定义环境变量，通常放在&#x2F;etc&#x2F;profile全局环境变量里，</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/application/jdk</span><br><span class="line">export CLASSPATH=$CLASSPATH:$JAVA_HOME/lib:$JAVA_HOME/jre/lib</span><br><span class="line">export PATH=$JAVA_HOME/bin:$JAVA_HOME/jre/bin:$PATH:$HOME/bin</span><br><span class="line">export RESIN_HOME=/application/resin　</span><br><span class="line">Copy</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="查看-x2F-取消环境变量"><a href="#查看-x2F-取消环境变量" class="headerlink" title="查看&#x2F;取消环境变量"></a>查看&#x2F;取消环境变量</h4><p>我们通常在工作中要查看一下环境变量中都配置了什么，需要做什么更改，所以我们就有了ehco或printf命令来打印查看环境变量。</p>
+<p><code>$HOME</code>:用户登录时进入的目录<br><code>$UID</code>:当前用户的uid（ 也就是用户的标识，相当于人的身份证）相当于id -u</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[king@king ~]$ echo $HOME</span><br><span class="line">/home/king</span><br><span class="line">[king@king ~]$ echo $UID</span><br><span class="line">300</span><br><span class="line">Copy</span><br></pre></td></tr></table></figure>
+
+<p>我们可以用unset来消除本地变量和环境变量</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[king@king ~]$ echo $USER</span><br><span class="line">nane</span><br><span class="line">[king@king ~]$ unset $USER</span><br><span class="line">[king@king ~]$ echo  $USER  #&lt;这里输出是个空行</span><br><span class="line">Copy</span><br></pre></td></tr></table></figure>
+
+<p>变量名一定要大写，可以在自身的Shell及子Shell中使用，常用export来定义环境变量<br>执行enc默认可以显示所有的环境变量名称及对应的值<br>输出时用“$变量名”，取消用“unset 变量名”</p>
+<p>双引号：可以解析变量的值</p>
+<p>单引号：不能解析变量的值</p>
+<h3 id="预设变量"><a href="#预设变量" class="headerlink" title="预设变量"></a>预设变量</h3><h4 id="shell直接提供无需定义的变量"><a href="#shell直接提供无需定义的变量" class="headerlink" title="shell直接提供无需定义的变量"></a>shell直接提供无需定义的变量</h4><p><a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/20200420213544763.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzI4ODIwMQ==,size_16,color_FFFFFF,t_70"><img src="https://img-blog.csdnimg.cn/20200420213544763.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzI4ODIwMQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></a></p>
+<p><a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/20200420213544763.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzI4ODIwMQ==,size_16,color_FFFFFF,t_70">在这里插入图片描述</a></p>
+<p>案例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">echo &quot;参数的个数=$#&quot;</span><br><span class="line">echo &quot;参数的内容=$*&quot;</span><br><span class="line">echo &quot;第一个参数：$1&quot;</span><br><span class="line">echo &quot;第一个参数：$2&quot;</span><br><span class="line">echo &quot;第一个参数：$3&quot;</span><br><span class="line">echo &quot;进程号$$&quot;</span><br><span class="line">echo &quot;进程名$0&quot;</span><br><span class="line">echo &quot;50*30的结果$?&quot;</span><br><span class="line">Copy</span><br></pre></td></tr></table></figure>
+
+<h3 id="脚本标量的特殊用法"><a href="#脚本标量的特殊用法" class="headerlink" title="脚本标量的特殊用法"></a>脚本标量的特殊用法</h3><p><a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/2020042021540169.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzI4ODIwMQ==,size_16,color_FFFFFF,t_70"><img src="https://img-blog.csdnimg.cn/2020042021540169.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzI4ODIwMQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></a></p>
+<p><a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/2020042021540169.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzI4ODIwMQ==,size_16,color_FFFFFF,t_70">在这里插入图片描述</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;今天是`date`&quot;    #反引号中的内容作为系统命令，并执行其内容可替换输出为一个变量</span><br><span class="line">Copy</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>（） 子shell执行 不影响当前shell</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">data=10</span><br><span class="line">(</span><br><span class="line">  data=100</span><br><span class="line">  echo &quot;data=$data&quot;</span><br><span class="line">  echo &quot;子shell&quot;</span><br><span class="line">)</span><br><span class="line">echo &quot;父shell data=$data&quot;</span><br><span class="line">Copy</span><br></pre></td></tr></table></figure>
+
+<p>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-0hnD29GI-1650241328287)(C:\Users\11066\AppData\Roaming\Typora\typora-user-images\image-20220412185103521.png)]</p>
+<ul>
+<li>{} 在当前shell中执行，会影响变量</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">data=10</span><br><span class="line">&#123;</span><br><span class="line">  data=100</span><br><span class="line">  echo &quot;data=$data&quot;</span><br><span class="line">  echo &quot;子shell&quot;</span><br><span class="line">&#125;</span><br><span class="line">echo &quot;父shell data=$data&quot;</span><br><span class="line">Copy</span><br></pre></td></tr></table></figure>
+
+<p>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-cDZNWYTb-1650241328288)(C:\Users\11066\AppData\Roaming\Typora\typora-user-images\image-20220412185203264.png)]</p>
+<h3 id="变量的扩展"><a href="#变量的扩展" class="headerlink" title="变量的扩展"></a>变量的扩展</h3><h4 id="判断变量是否存在"><a href="#判断变量是否存在" class="headerlink" title="判断变量是否存在"></a>判断变量是否存在</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"># $&#123;num:-val&#125;如果num存在，输出num否在输出val</span><br><span class="line">echo $&#123;num:-1&#125;</span><br><span class="line">num=200</span><br><span class="line">echo $&#123;num:-1&#125;</span><br><span class="line">Copy</span><br><span class="line">#!/bin/bash</span><br><span class="line"># $&#123;num:=val&#125;如果num存在，输出num,否则输出val并赋值num为val值</span><br><span class="line">echo $&#123;num:-1&#125;</span><br><span class="line">num=200</span><br><span class="line">echo $&#123;num:-1&#125;</span><br><span class="line">Copy</span><br></pre></td></tr></table></figure>
+
+<h4 id="字符串操作"><a href="#字符串操作" class="headerlink" title="字符串操作"></a>字符串操作</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">str=&quot;1 this is test code 1&quot;</span><br><span class="line"># 测量字符串长度$&#123;#str&#125;</span><br><span class="line">echo &quot;the length of str is $&#123;#str&#125;&quot;</span><br><span class="line"># 从下标3的位置提取$&#123;str:3&#125;</span><br><span class="line">echo $&#123;str:3&#125;</span><br><span class="line"># 从下标为3的位置提取长度为6字节</span><br><span class="line">echo $&#123;str:3:6&#125;</span><br><span class="line">#$&#123;str/old/new&#125; 用new替换str中出现的第一个old</span><br><span class="line">echo $&#123;str/test/dome&#125;</span><br><span class="line">#$&#123;str//old/new&#125;用new 替换str中出现的所有old</span><br><span class="line">echo $&#123;str//1/&#125;</span><br><span class="line">Copy</span><br></pre></td></tr></table></figure>
+
+<p>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-GPbX3eqw-1650241328288)(C:\Users\11066\AppData\Roaming\Typora\typora-user-images\image-20220412191325681.png)]</p>
+<h4 id="字符串测试"><a href="#字符串测试" class="headerlink" title="字符串测试"></a>字符串测试</h4><p>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-8hUzUnOj-1650241328289)(C:\Users\11066\AppData\Roaming\Typora\typora-user-images\image-20220413111931184.png)]</p>
+<ul>
+<li><p>linux中 返回值为0 是true 1为false</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">test -e test.sh # 测试是否存在文件</span><br><span class="line">echo $?   #返回上一条语句执行结果</span><br><span class="line"></span><br><span class="line">#[condition]   []中加条件判断</span><br><span class="line">[-e test.sh]  # 同 test -e test.sh</span><br><span class="line"></span><br><span class="line">Copy</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line">read str1 str2</span><br><span class="line"># 判断字符串是否相同</span><br><span class="line">[ $str1 = $str2 ]  #注意[] 前后空格</span><br><span class="line">echo $?</span><br><span class="line">[ -z $str1 ] #判断str1是否为空数值测试</span><br><span class="line">Copy</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="数值测试"><a href="#数值测试" class="headerlink" title="数值测试"></a>数值测试</h4><p>格式 test num1 num_operator num2</p>
+<p>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-OjQxnR2X-1650241328289)(C:\Users\11066\AppData\Roaming\Typora\typora-user-images\image-20220413113450881.png)]</p>
+<p>案例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">[ 1 -eq 1 ]  # 1=1 是否成立</span><br><span class="line">echo $?</span><br><span class="line">Copy</span><br></pre></td></tr></table></figure>
+
+<h4 id="符合语句测试"><a href="#符合语句测试" class="headerlink" title="符合语句测试"></a>符合语句测试</h4><p><a href="file:///C:/Users/11066/AppData/Roaming/Typora/typora-user-images/image-20220413113732020.png"><img src="file:///C:/Users/11066/AppData/Roaming/Typora/typora-user-images/image-20220413113732020.png" alt="image-20220413113732020">image-20220413113732020</a></p>
+<p>案例</p>
+<p>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-LNAyZC73-1650241328290)(C:\Users\11066\AppData\Roaming\Typora\typora-user-images\image-20220413113718688.png)]</p>
+<p>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-t0n6z0s7-1650241328291)(C:\Users\11066\AppData\Roaming\Typora\typora-user-images\image-20220413113843699.png)]</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">test 1 -eq 1 -a 1 -ge 0 || echo ???   # 1 = 1 and 1&gt;=0 成立 不执行echo ？？？</span><br><span class="line"></span><br><span class="line">Copy</span><br></pre></td></tr></table></figure>
+
+<h3 id="控制语句"><a href="#控制语句" class="headerlink" title="控制语句"></a>控制语句</h3><h4 id="if控制语句"><a href="#if控制语句" class="headerlink" title="if控制语句"></a>if控制语句</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">格式一：</span><br><span class="line">if [条件1]; then</span><br><span class="line">    执行第一段程序</span><br><span class="line">else</span><br><span class="line">    执行第二段程序</span><br><span class="line">fi</span><br><span class="line">格式二：</span><br><span class="line">if [条件1]; then</span><br><span class="line">    执行第一段程序</span><br><span class="line">elif [条件2]；then</span><br><span class="line">执行第二段程序</span><br><span class="line">else</span><br><span class="line">    执行第三段程序</span><br><span class="line">fi</span><br><span class="line">Copy</span><br></pre></td></tr></table></figure>
+
+<p>案例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line">read -p $&#x27;请输入文件夹名称：\n&#x27; filename</span><br><span class="line">if [ -e $filename ];then</span><br><span class="line">	echo &quot;$filename存在 即将进入文件夹&quot;</span><br><span class="line">	cd $filename</span><br><span class="line">	echo &quot;即将创建测试文件&quot;</span><br><span class="line">	touch dome.sh   #创建新的空文件夹</span><br><span class="line">else</span><br><span class="line">	echo &quot;$filename 不存在，即将创建文件夹&quot;</span><br><span class="line">	mkdir $filename</span><br><span class="line">	echo &quot;创建文件夹成功，即将进入&quot;</span><br><span class="line">	cd $filename</span><br><span class="line">	echo &quot;即将创建测试文件&quot;</span><br><span class="line">	touch dome.sh   #创建新的空文件夹</span><br><span class="line">fi</span><br><span class="line">tree</span><br><span class="line">Copy</span><br></pre></td></tr></table></figure>
+
+<h4 id="case（java中switch-case）"><a href="#case（java中switch-case）" class="headerlink" title="case（java中switch case）"></a>case（java中switch case）</h4><p>格式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">case 变量 in &quot;指定值1&quot;)  # 若变量与指定值相同，则执行程序段1</span><br><span class="line">	程序段1</span><br><span class="line">	;;                 # 相当于break</span><br><span class="line">	指定值2)</span><br><span class="line">	程序段2</span><br><span class="line">	;;</span><br><span class="line">	指定值3)</span><br><span class="line">	程序段3</span><br><span class="line">	;;</span><br><span class="line">esac</span><br><span class="line">Copy</span><br><span class="line">read -p $&#x27;请输入变量的值：\n&#x27; num</span><br><span class="line">case $num in 1|&#x27;一&#x27;|&#x27;壹&#x27;)</span><br><span class="line">	echo &quot;输入了1&quot;</span><br><span class="line">	;;</span><br><span class="line">	2|&#x27;二&#x27;|&#x27;贰&#x27;)</span><br><span class="line">	echo &quot;输入了2&quot;</span><br><span class="line">	;;</span><br><span class="line">	3|&#x27;三&#x27;|&#x27;叁&#x27;)</span><br><span class="line">	echo &quot;输入了3&quot;</span><br><span class="line">esac</span><br><span class="line">Copy</span><br></pre></td></tr></table></figure>
+
+<h4 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h4><p>形式一：</p>
+<p>for((初始值;限制值;执行步长))</p>
+<p> do</p>
+<p> 程序段</p>
+<p> done</p>
+<p>例子</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">declare -i sum=0                    #定义int类型变量</span><br><span class="line">declare -i i;</span><br><span class="line">for((int i=0;i&lt;=100;i++))</span><br><span class="line">    do</span><br><span class="line">        sum+=$i;</span><br><span class="line">        done</span><br><span class="line">    echo &quot;sum=$sum&quot;  #5050</span><br><span class="line">Copy</span><br></pre></td></tr></table></figure>
+
+<p>形式二</p>
+<p>for var in con1 con2 con3</p>
+<p>do</p>
+<p> 程序段</p>
+<p>done</p>
+<ul>
+<li>例子</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">for filename in `ls`   #遍历当前目录下文件名</span><br><span class="line">    do</span><br><span class="line">        if [-d $filename];then</span><br><span class="line">            echo &quot;$filename是文件夹&quot;</span><br><span class="line">            elif [-f $filename];then</span><br><span class="line">            echo &quot;$filename是普通文件&quot;</span><br><span class="line">        fi</span><br><span class="line">    done</span><br><span class="line">Copy</span><br></pre></td></tr></table></figure>
+
+<h4 id="while-循环"><a href="#while-循环" class="headerlink" title="while 循环"></a>while 循环</h4><ul>
+<li>while 循环当条件不满足循环停止循环</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">while condition</span><br><span class="line">	do</span><br><span class="line">		代码块</span><br><span class="line">	done</span><br><span class="line">Copy</span><br><span class="line">#!/bin/bash</span><br><span class="line">i = 0</span><br><span class="line">while [ $i -le 100]</span><br><span class="line">do</span><br><span class="line">echo $i</span><br><span class="line">let i+=1         #let命令用于指定算术运算,即 let expretion。</span><br><span class="line">done</span><br><span class="line">Copy</span><br></pre></td></tr></table></figure>
+
+<h4 id="until"><a href="#until" class="headerlink" title="until"></a>until</h4><ul>
+<li>until 循环 当循环满足条件 停止循环</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">i=0</span><br><span class="line">until [ i -le 10 ]</span><br><span class="line">do</span><br><span class="line">echo $i</span><br><span class="line">done</span><br><span class="line">Copy</span><br></pre></td></tr></table></figure>
+
+<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><ul>
+<li>格式一</li>
+</ul>
+<p>函数名（）{</p>
+<p>命令…</p>
+<p>}</p>
+<ul>
+<li>格式二</li>
+</ul>
+<p>function 函数名（）{</p>
+<p>命令…</p>
+<p>}</p>
+<p>函数调用 函数名 $param1 $param2</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">function test()&#123;</span><br><span class="line">	echo &quot;第一个参数为$1&quot;   $1 接收第一个参数</span><br><span class="line">&#125;</span><br><span class="line">test 100</span><br><span class="line">Copy</span><br></pre></td></tr></table></figure>
+
+<p>案例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"># 找出两个数的最大值</span><br><span class="line">function max_value()&#123;</span><br><span class="line">        if [ $1 -ge $2 ];then</span><br><span class="line">                return $1</span><br><span class="line">        else return $2</span><br><span class="line">        fi</span><br><span class="line">&#125;</span><br><span class="line">read -p $&#x27;请输入第一个值:\n&#x27; param1</span><br><span class="line">read -p $&#x27;请输入第二个值:\n&#x27; param2</span><br><span class="line">max_value $param1 $param2</span><br><span class="line">echo &quot;俩个数中最大值为$?&quot;</span><br><span class="line">Copy</span><br></pre></td></tr></table></figure>
+
+<p>函数导入source 文件名</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"># 找出两个数的最大值</span><br><span class="line">function max_value()&#123;</span><br><span class="line">        if [ $1 -ge $2 ];then</span><br><span class="line">                return $1</span><br><span class="line">        else return $2</span><br><span class="line">        fi</span><br><span class="line">&#125;</span><br><span class="line">Copy</span><br></pre></td></tr></table></figure>
+
+<p>命令…</p>
+<p>}</p>
+<p>函数调用 函数名 $param1 $param2</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">function test()&#123;</span><br><span class="line">	echo &quot;第一个参数为$1&quot;   $1 接收第一个参数</span><br><span class="line">&#125;</span><br><span class="line">test 100</span><br><span class="line">Copy</span><br></pre></td></tr></table></figure>
+
+<p>案例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"># 找出两个数的最大值</span><br><span class="line">function max_value()&#123;</span><br><span class="line">        if [ $1 -ge $2 ];then</span><br><span class="line">                return $1</span><br><span class="line">        else return $2</span><br><span class="line">        fi</span><br><span class="line">&#125;</span><br><span class="line">read -p $&#x27;请输入第一个值:\n&#x27; param1</span><br><span class="line">read -p $&#x27;请输入第二个值:\n&#x27; param2</span><br><span class="line">max_value $param1 $param2</span><br><span class="line">echo &quot;俩个数中最大值为$?&quot;</span><br><span class="line">Copy</span><br></pre></td></tr></table></figure>
+
+<p>函数导入source 文件名</p>
+<ul>
+<li><p>test.sh</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"># 找出两个数的最大值</span><br><span class="line">function max_value()&#123;</span><br><span class="line">        if [ $1 -ge $2 ];then</span><br><span class="line">                return $1</span><br><span class="line">        else return $2</span><br><span class="line">        fi</span><br><span class="line">&#125;</span><br><span class="line">Copy</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>test2.sh<br>`&#96;&#96;<br>#!&#x2F;bin&#x2F;bash<br>source test.sh</p>
+</li>
+</ul>
+<p>read -p $’请输入第一个值:\n’ param1<br>read -p $’请输入第二个值:\n’ param2</p>
+<p>max_value $param1 $param2<br>echo “两个数中最大值为$?”</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://flechazo_star.gitee.io">Arancia</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://flechazo_star.gitee.io/2023/05/22/shell%E5%91%BD%E4%BB%A4/">https://flechazo_star.gitee.io/2023/05/22/shell%E5%91%BD%E4%BB%A4/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://flechazo_star.gitee.io" target="_blank">我の博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/shell/">shell</a></div><div class="post_share"><div class="social-share" data-image="https://s1.ax1x.com/2023/05/22/p9oJDWq.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/05/22/docker%E9%83%A8%E7%BD%B2mysql/" title="docker部署mysql"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">docker部署mysql</div></div></a></div><div class="next-post pull-right"><a href="/2023/05/22/Spring%E9%9D%99%E6%80%81%E4%BB%A3%E7%90%86/" title="Spring静态代理"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Spring静态代理</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://s1.ax1x.com/2023/05/22/p9oJDWq.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Arancia</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://gitee.com/nmym_admin"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">不积硅步，无以至千里</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Shell-%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0"><span class="toc-number">1.</span> <span class="toc-text">Shell 脚本语言学习笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#echo-%E8%BE%93%E5%87%BA%E5%86%85%E5%AE%B9%E6%94%AF%E6%8C%81%E6%8D%A2%E8%A1%8C"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">echo 输出内容支持换行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#rwx%E6%9D%83%E9%99%90%E5%AF%B9%E5%BA%94%E6%95%B0%E5%AD%97"><span class="toc-number">1.0.0.2.</span> <span class="toc-text">rwx权限对应数字</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#read"><span class="toc-number">1.0.0.3.</span> <span class="toc-text">read</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F%E4%B8%8E%E6%B8%85%E9%99%A4%E5%8F%98%E9%87%8F"><span class="toc-number">1.0.0.4.</span> <span class="toc-text">定义变量与清除变量</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E7%9A%84%E6%9F%A5%E7%9C%8B"><span class="toc-number">1.0.1.</span> <span class="toc-text">变量的查看</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%89%80%E6%9C%89%E5%8F%98%E9%87%8F-%EF%BC%9Aset"><span class="toc-number">1.0.1.1.</span> <span class="toc-text">查看所有变量 ：set</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-number">1.0.1.2.</span> <span class="toc-text">查看环境变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%89%80%E6%9C%89%E7%9A%84%E5%8F%98%E9%87%8F%EF%BC%8C%E5%87%BD%E6%95%B0%EF%BC%8C%E6%95%B4%E6%95%B0%EF%BC%8C%E5%92%8C%E5%B7%B2%E7%BB%8F%E5%AF%BC%E5%87%BA%E7%9A%84%E5%8F%98%E9%87%8F"><span class="toc-number">1.0.1.3.</span> <span class="toc-text">查看所有的变量，函数，整数，和已经导出的变量</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-number">1.0.2.</span> <span class="toc-text">自定义环境变量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9A%82%E6%97%B6%E8%AE%BE%E5%AE%9A%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-number">1.0.2.1.</span> <span class="toc-text">暂时设定环境变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B0%B8%E4%B9%85%E8%AE%BE%E5%AE%9A%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-number">1.0.2.2.</span> <span class="toc-text">永久设定环境变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B-x2F-%E5%8F%96%E6%B6%88%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-number">1.0.2.3.</span> <span class="toc-text">查看&#x2F;取消环境变量</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%84%E8%AE%BE%E5%8F%98%E9%87%8F"><span class="toc-number">1.0.3.</span> <span class="toc-text">预设变量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#shell%E7%9B%B4%E6%8E%A5%E6%8F%90%E4%BE%9B%E6%97%A0%E9%9C%80%E5%AE%9A%E4%B9%89%E7%9A%84%E5%8F%98%E9%87%8F"><span class="toc-number">1.0.3.1.</span> <span class="toc-text">shell直接提供无需定义的变量</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%84%9A%E6%9C%AC%E6%A0%87%E9%87%8F%E7%9A%84%E7%89%B9%E6%AE%8A%E7%94%A8%E6%B3%95"><span class="toc-number">1.0.4.</span> <span class="toc-text">脚本标量的特殊用法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E7%9A%84%E6%89%A9%E5%B1%95"><span class="toc-number">1.0.5.</span> <span class="toc-text">变量的扩展</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E5%8F%98%E9%87%8F%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8"><span class="toc-number">1.0.5.1.</span> <span class="toc-text">判断变量是否存在</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C"><span class="toc-number">1.0.5.2.</span> <span class="toc-text">字符串操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%B5%8B%E8%AF%95"><span class="toc-number">1.0.5.3.</span> <span class="toc-text">字符串测试</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E5%80%BC%E6%B5%8B%E8%AF%95"><span class="toc-number">1.0.5.4.</span> <span class="toc-text">数值测试</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%A6%E5%90%88%E8%AF%AD%E5%8F%A5%E6%B5%8B%E8%AF%95"><span class="toc-number">1.0.5.5.</span> <span class="toc-text">符合语句测试</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5"><span class="toc-number">1.0.6.</span> <span class="toc-text">控制语句</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#if%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5"><span class="toc-number">1.0.6.1.</span> <span class="toc-text">if控制语句</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#case%EF%BC%88java%E4%B8%ADswitch-case%EF%BC%89"><span class="toc-number">1.0.6.2.</span> <span class="toc-text">case（java中switch case）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#for%E5%BE%AA%E7%8E%AF"><span class="toc-number">1.0.6.3.</span> <span class="toc-text">for循环</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#while-%E5%BE%AA%E7%8E%AF"><span class="toc-number">1.0.6.4.</span> <span class="toc-text">while 循环</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#until"><span class="toc-number">1.0.6.5.</span> <span class="toc-text">until</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0"><span class="toc-number">1.0.7.</span> <span class="toc-text">函数</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/06/06/%E7%88%AC%E8%99%AB%E5%85%A5%E9%97%A8/" title="二、爬虫入门">二、爬虫入门</a><time datetime="2023-06-06T05:56:40.000Z" title="发表于 2023-06-06 13:56:40">2023-06-06</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/26/%E5%88%9D%E5%A7%8Bpython/" title="python基础">python基础</a><time datetime="2023-05-26T09:02:00.000Z" title="发表于 2023-05-26 17:02:00">2023-05-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/22/python%20%E5%90%84%E7%A7%8D%E5%8A%A0%E5%AF%86/" title="python 各种加密">python 各种加密</a><time datetime="2023-05-22T15:11:57.000Z" title="发表于 2023-05-22 23:11:57">2023-05-22</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/22/Spring%E9%9D%99%E6%80%81%E4%BB%A3%E7%90%86/" title="Spring静态代理">Spring静态代理</a><time datetime="2023-05-22T13:39:55.000Z" title="发表于 2023-05-22 21:39:55">2023-05-22</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/22/shell%E5%91%BD%E4%BB%A4/" title="shell命令">shell命令</a><time datetime="2023-05-22T13:39:55.000Z" title="发表于 2023-05-22 21:39:55">2023-05-22</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Arancia</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://www.arancia.top/',
+      region: '',
+      onCommentLoaded: function () {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://www.arancia.top/',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      countELement.textContent = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const runFn = () => {
+    init()
+    GLOBAL_CONFIG_SITE.isPost && getCount()
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    } 
+    getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !true) {
+    if (true) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><div class="aplayer no-destroy" data-id="2116423512" data-server="netease" data-type="playlist" data-fixed="true" data-listmaxheight="500px" data-autoplay="true"> </div><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-show-text.min.js" data-mobile="false" data-text="🎉,🎊,🕊️,💕,🥰,🎁,🍔" data-fontsize="15px" data-random="false" async="async"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
